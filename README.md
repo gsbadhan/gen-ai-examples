@@ -1,6 +1,7 @@
 # gen-ai-example
 
-1. chatgpt integration
+1. Chatgpt integration, see `/chat-gpt integration`
+2. GenAI model integration using AWS bedrock, see `/genai-aws`
 
 
 
