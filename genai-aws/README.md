@@ -1,6 +1,6 @@
 
 # AWS infrastructure
-1. Enable llama3 model in AWS bedrock 
+1. Enable llama3, anthropic etc. models in AWS bedrock 
 2. Create AWS IAM user, create access key and bedrock permissions policies
 
 # How to run

@@ -15,11 +15,12 @@ payload={
 }
 body=json.dumps(payload)
 model_id="meta.llama3-8b-instruct-v1:0"
+content_type="application/json"
 response=bedrock.invoke_model(
     body=body,
     modelId=model_id,
-    accept="application/json",
-    contentType="application/json"
+    accept=content_type,
+    contentType=content_type
 )
 
 response_body=json.loads(response.get("body").read())
