@@ -2,6 +2,8 @@
 
 1. Chatgpt integration, see `/chat-gpt integration`
 2. GenAI model integration using AWS bedrock, see `/genai-aws`
+3. Langchain integration `/langchain`
+4. Langsmith integration `/langsmith`
 
 
 
