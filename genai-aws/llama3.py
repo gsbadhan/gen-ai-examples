@@ -8,7 +8,7 @@ what is best book of data structure in computer science ? and output should not 
 bedrock=boto3.client(service_name="bedrock-runtime")
 
 payload={
-    "prompt":"[INST]"+ prompt +"[/INST]",
+    "prompt":prompt,
     "max_gen_len":512,
     "temperature":0.5,
     "top_p":0.9
