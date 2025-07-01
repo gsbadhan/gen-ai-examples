@@ -12,3 +12,4 @@
   -d '{"user_id": "abc123", "message": "What is the capital of Japan?"}'
 3. shutdown agent server: find and kill the port like lsof -i tcp:8000 and kill -9 <pid>
 
+![agent flow graph](src/agent_activity_graph.png)

@@ -34,3 +34,10 @@ def get_graph():
     builder.add_node("respond", respond_node)
     builder.set_entry_point("respond")
     return builder.compile()
+
+# get the Mermaid description
+def show_graph(compile_graph):
+    graph = compile_graph.get_graph()
+    with open("agent_activity_graph.png", "wb") as f:
+        f.write(graph.draw_mermaid_png())
+    print("Graph image saved as agent_activity_graph.png")
