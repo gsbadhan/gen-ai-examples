@@ -12,9 +12,8 @@ class ChatRequest(BaseModel):
 
 @app.post("/chat")
 async def chat(req: ChatRequest):
-    #state = ChatState(user_id=req.user_id, input_message=req.message)
     state = {
-    "user_id": req.user_id,
+    "session_id": req.user_id,
     "input_message": req.message
     }
     result = chat_graph.invoke(state)

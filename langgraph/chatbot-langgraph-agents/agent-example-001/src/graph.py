@@ -1,30 +1,41 @@
 from langgraph.graph import StateGraph
-from langchain.chains import ConversationChain
-from memory import get_user_memory
-from config import get_llm
+from langchain_core.runnables.history import RunnableWithMessageHistory
+from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
+from langchain_core.runnables import Runnable
+from src.memory import get_user_memory
+from src.config import get_llm
 
 
-class ChatState:
+# 1. Prepare the LLM and Prompt Template
+prompt = ChatPromptTemplate.from_messages([
+    MessagesPlaceholder(variable_name="history"),("human", "{input}")
+])
 
-    def __init__(self, user_id, input_message):
-        self.user_id = user_id
-        self.input_message = input_message
-        self.output_message = None
+# 2. Define the base LLM chain
+llm_chain: Runnable = prompt | get_llm()
 
+# 3. Wrap it with per-user memory
+chat_runnable = RunnableWithMessageHistory(
+    llm_chain,
+    get_user_memory,  # This should return a MessageHistory object (e.g., from Redis or ConversationBufferMemory)
+    input_messages_key="input",
+    history_messages_key="history"
+)
 
+# 4. LangGraph Node Function
 def respond_node(state: dict) -> dict:
-    user_id = state["user_id"]
+    user_id = state["session_id"]
     input_message = state["input_message"]
 
-    memory = get_user_memory(user_id)
-    llm = get_llm()
-    chain = ConversationChain(llm=llm, memory=memory)
-    output_message = chain.run(input_message)
+    response = chat_runnable.invoke(
+        {"input": input_message},
+        config={"configurable": {"session_id": user_id}}  # Required for MessageHistory
+    )
 
     return {
         "user_id": user_id,
         "input_message": input_message,
-        "output_message": output_message
+        "output_message": response.content if hasattr(response, "content") else str(response)
     }
 
 
