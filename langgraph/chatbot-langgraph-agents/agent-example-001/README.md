@@ -12,7 +12,7 @@ It gives you basic chat agent behaviour. It has in-memory history for chat conte
 3. source .venv/bin/activate
 4. uv sync
 
-# environment configurations
+# environment configurations, you use bash_profile or .env
 export OPENAI_API_KEY=xxxxxx
 export LANGSMITH_TRACING=true
 export LANGSMITH_API_KEY=xxxxxx
@@ -31,5 +31,6 @@ export LANGSMITH_PROJECT="chatbot-agent-test"
 1. for integration tests: pytest tests/integration
 2. for unit tests: pytest tests/unit
 3. for code coverage: pytest --cov=src
+4. for code coverage report: pytest --cov=src --cov-report=html
 
 
