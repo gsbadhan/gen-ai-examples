@@ -1,6 +1,12 @@
-#Note: its fake data for testing pupose.
+# Note: its fake data for testing purpose.
 
 Information about Delhi:
 male and female ratio: 1:1
 Per capita income: 50000
 Population: 10 million
+
+Information about Tokya:
+male and female ratio: 1:1
+Per capita income: 100000
+Population: 2 million
+
