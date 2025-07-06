@@ -12,11 +12,11 @@ It gives you basic chat agent behaviour. It has in-memory history for chat conte
 3. source .venv/bin/activate
 4. uv sync
 
-# environment configurations, you use bash_profile or .env
-export OPENAI_API_KEY=xxxxxx
-export LANGSMITH_TRACING=true
-export LANGSMITH_API_KEY=xxxxxx
-export LANGSMITH_PROJECT="chatbot-agent-test"
+# environment configurations, you can put in bash_profile or .env
+1. export OPENAI_API_KEY=xxxxxx
+2. export LANGSMITH_TRACING=true
+3. export LANGSMITH_API_KEY=xxxxxx
+4. export LANGSMITH_PROJECT="chatbot-agent-test"
 
 
 # run agent server locally
