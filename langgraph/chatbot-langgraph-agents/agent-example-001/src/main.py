@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
-from graph import get_graph, show_graph
+from src.graph import get_graph, show_graph
 
 app = FastAPI()
 chat_graph = get_graph()
