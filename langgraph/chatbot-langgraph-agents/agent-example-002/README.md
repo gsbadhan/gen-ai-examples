@@ -23,7 +23,12 @@ It gives you basic chat agent behaviour with RAG. It has in-memory history for c
 1. start agent server: uvicorn src.main:app --host 0.0.0.0 --port 8000
 2. send user questions: curl -X POST http://localhost:8000/chat \
   -H "Content-Type: application/json" \
-  -d '{"user_id": "abc123", "message": "What is the capital of Japan?"}'
+  -d '{"user_id": "abc123", "message": "What is the capital of india?"}'
+
+  curl -X POST http://localhost:8000/chat   -H "Content-Type: application/json"   -d '{"user_id": "abc123", "message": "What is the per capita income of that?"}'
+
+  curl -X POST http://localhost:8000/chat   -H "Content-Type: application/json"   -d '{"user_id": "abc123", "message": "What is the per capita income and male/female ration of that?"}'
+  
 3. shutdown agent server: press CTRL+C or find and kill the port like lsof -i tcp:8000 and kill -9 PID
 
 
