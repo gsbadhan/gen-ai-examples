@@ -20,7 +20,7 @@ It gives you basic chat agent behaviour. It has in-memory history for chat conte
 
 
 # run agent server locally
-1. start agent server: uvicorn main:app --host 0.0.0.0 --port 8000
+1. start agent server: uvicorn src.main:app --host 0.0.0.0 --port 8000
 2. send user questions: curl -X POST http://localhost:8000/chat \
   -H "Content-Type: application/json" \
   -d '{"user_id": "abc123", "message": "What is the capital of Japan?"}'
