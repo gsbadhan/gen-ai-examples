@@ -5,6 +5,7 @@ from langgraph.graph import StateGraph
 from typing import TypedDict
 from langgraph.graph import StateGraph
 
+# state model
 class GraphState(TypedDict):
     input: str
     plan: str
@@ -41,6 +42,9 @@ def retrieve_node(state):
 
     # Proceed with retrieval
     results = retriever.invoke(topic)
+    if not results:
+        print(f"RAG unable to fetch relevant results: {results} !!")
+
     return {"input":topic, "docs": results}
 
 
@@ -49,6 +53,9 @@ def fallback_node(state):
     topic = state.get("input")
     result = search_tool.invoke({"query": topic})
     #print(f"fallback_node tavily resuls: {result}")
+    if not result:
+        print(f"Tavily unable to fetch relevant results: {result} !!")
+
     return {"input":topic, "docs": result}
 
 def gap_node(state):
