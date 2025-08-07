@@ -74,7 +74,7 @@ def solution_node(state):
 def code_node(state):
     print(f"in code_node got solution: {state['solution']}")
     solution = state.get("solution")
-    response = llm.invoke(f"Write sample code for solution:\n{solution}")
+    response = llm.invoke(f"Write sample JAVA code for solution:\n{solution}")
     print(f"in code_node code: {response}")
     return {"code": response}
 
