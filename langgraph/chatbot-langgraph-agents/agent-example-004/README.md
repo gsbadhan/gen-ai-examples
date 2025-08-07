@@ -4,7 +4,7 @@ It gives you basic agentic research chatbot behaviour. Its integrated with RAG(C
 
 
 # chat agent flow graph
-![agent flow graph](src/agent_activity_graph.png)
+![agent flow graph](agent_activity_graph.png)
 
 
 # project setup

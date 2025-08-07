@@ -2,6 +2,17 @@ from langchain_tavily import TavilySearch
 from langchain_chroma import Chroma
 from langchain_openai import OpenAI, OpenAIEmbeddings
 from langgraph.graph import StateGraph
+from typing import TypedDict
+from langgraph.graph import StateGraph
+
+class GraphState(TypedDict):
+    input: str
+    plan: str
+    docs: list
+    gaps: str
+    solution: str
+    code: str
+
 
 
 # LLM setup (choose one)
@@ -14,8 +25,7 @@ search_tool = TavilySearch()
 
 
 def plan_node(state):
-    print("in plan_node..")
-    print(f"plan_node got input: {state}")
+    print(f"in plan_node got topic: {state['input']}")
     topic = state.get("input")
     if not topic or not isinstance(topic, str):
         raise ValueError("Invalid 'input' for plan_node: must be a non-empty string.")
@@ -24,8 +34,7 @@ def plan_node(state):
     return {"input":topic, "plan": response}
 
 def retrieve_node(state):
-    print("in retrieve_node..")
-    print(f"retrieve_node got input: {state}")
+    print(f"in retrieve_node got input: {state['input']}")
     topic = state.get("input")
     if not topic or not isinstance(topic, str):
         raise ValueError("Invalid 'input' for retrieval: must be a non-empty string.")
@@ -36,41 +45,41 @@ def retrieve_node(state):
 
 
 def fallback_node(state):
-    print("in fallback_node..")
-    print(f"fallback_node got input: {state}")
+    print(f"in fallback_node got input: {state['input']}")
     topic = state.get("input")
     result = search_tool.invoke({"query": topic})
-    return {"input":topic, "fallback_docs": result}
+    #print(f"fallback_node tavily resuls: {result}")
+    return {"input":topic, "docs": result}
 
 def gap_node(state):
-    print("in gap_node..")
-    print(f"gap_node got input: {state}")
-    docs = state.get("docs", []) or state.get("fallback_docs", [])
+    print(f"in gap_node got docs: {state['docs']}")
+    docs = state.get("docs", [])
     print(f"docs: {docs}")
     if isinstance(docs, dict):
         docs = list(docs.values())
     if not isinstance(docs, list):
         docs = [docs]
-    #content = "\n".join([doc for doc in docs[:3]])
     content = str(docs)
     response = llm.invoke(f"Identify research gaps from these works:\n{content}")
+    #print(f"in gap_node gaps: {response}")
     return {"gaps": response}
 
 def solution_node(state):
-    print("in solution_node..")
-    print(f"solution_node got input: {state}")
-    response = llm.invoke(f"Propose a solution for gaps:\n{state['gaps']}")
+    print(f"in solution_node got gaps: {state['gaps']}")
+    gaps = state.get("gaps")
+    response = llm.invoke(f"Propose a solution for gaps:\n{gaps}")
+    #print(f"in solution_node solution: {response}")
     return {"solution": response}
 
 def code_node(state):
-    print("in code_node..")
-    print(f"code_node got input: {state}")
-    response = llm.invoke(f"Write sample code for solution:\n{state['solution']}")
+    print(f"in code_node got solution: {state['solution']}")
+    solution = state.get("solution")
+    response = llm.invoke(f"Write sample code for solution:\n{solution}")
+    print(f"in code_node code: {response}")
     return {"code": response}
 
 def final_node(state):
-    print("in final_node..")
-    print(f"final_node got input: {state}")
+    #print(f"in final_node got input: {state}")
     return {
         "output": {
             "Plan": state.get("plan"),
@@ -82,8 +91,7 @@ def final_node(state):
 
 # LangGraph definition
 def build_agent_graph():
-    workflow = StateGraph(dict)
-
+    workflow = StateGraph(GraphState)
     workflow.add_node("Plan", plan_node)
     workflow.add_node("Retrieve", retrieve_node)
     workflow.add_node("Fallback", fallback_node)
@@ -105,4 +113,11 @@ def build_agent_graph():
     workflow.set_finish_point("Final")
 
     return workflow.compile()
+
+
+def show_graph(compiled_graph):
+    graph = compiled_graph.get_graph()
+    with open("agent_activity_graph.png", "wb") as f:
+        f.write(graph.draw_mermaid_png())
+    print("Graph image saved as agent_activity_graph.png")
 
