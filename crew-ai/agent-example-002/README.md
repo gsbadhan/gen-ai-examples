@@ -1,5 +1,5 @@
 # Description
-Basic multi agent using CrewAI framework https://www.crewai.com/.
+Multi agent flow using CrewAI framework https://www.crewai.com/.
 
 
 # project setup

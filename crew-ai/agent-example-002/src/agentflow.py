@@ -16,7 +16,7 @@ research_agent = Agent(
     role="Research Strategist",
     goal="Find relevant research material and identify gaps.",
     backstory="Expert in literature review, critical analysis, and research proposal creation.",
-    tools=[], # for external tools like Tavily
+    tools=[], # for external tools e.g. Tavily
     verbose=True,
     llm=llm
 )
