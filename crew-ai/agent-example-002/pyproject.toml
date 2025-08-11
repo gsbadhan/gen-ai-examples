@@ -9,8 +9,6 @@ dependencies = [
     "flask>=3.1.1",
     "langchain-community>=0.3.27",
     "langchain-openai>=0.3.29",
-    "langchain-tavily>=0.2.11",
     "openai>=1.99.5",
     "python-dotenv>=1.1.1",
-    "tavily-python>=0.7.10",
 ]
