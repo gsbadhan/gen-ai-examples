@@ -2,7 +2,7 @@ import os
 from dotenv import load_dotenv 
 from crewai import Agent, Task, Crew
 from tavily import TavilyClient
-from openai import OpenAI
+from langchain_openai import ChatOpenAI
 
 
 load_dotenv()
@@ -11,7 +11,7 @@ OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 TAVILY_API_KEY = os.getenv("TAVILY_API_KEY")
 
 # Init clients
-openai_client = OpenAI(api_key=OPENAI_API_KEY)
+llm = ChatOpenAI(api_key=OPENAI_API_KEY, model="gpt-4o-mini", temperature=0.3)
 tavily_client = TavilyClient(api_key=TAVILY_API_KEY)
 
 # CrewAI Agent for research
@@ -22,7 +22,7 @@ research_agent = Agent(
         "You are a highly skilled research assistant who uses external "
         "search tools and synthesizes information into concise answers."
     ),
-    llm="gpt-4o-mini"  # OpenAI model
+    llm=llm
 )
 
 def perform(topic:str):
