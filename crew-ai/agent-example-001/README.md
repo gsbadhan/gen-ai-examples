@@ -1,5 +1,5 @@
 # Description
-It gives you basic agent using CrewAI framework https://www.crewai.com/. Its integrated with Tavily for external web call.
+Basic single agent using CrewAI framework https://www.crewai.com/. Its integrated with Tavily for external web call.
 
 
 # project setup
