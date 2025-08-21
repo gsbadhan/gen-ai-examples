@@ -1,5 +1,5 @@
 # Description
-It gives you basic CRUD operations of chromadb.
+CRUD operations of chromadb.
 
 # project setup
 1. uv init example-001 (optional)
