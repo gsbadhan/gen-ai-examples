@@ -11,7 +11,7 @@ CRUD operations of chromadb.
 python src/create_product_catalog.py
 
 # Run CRUD operations
-python crud_operations.py
+python src/crud_operations.py
 
 
 # Tests execution
