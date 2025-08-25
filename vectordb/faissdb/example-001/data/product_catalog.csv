@@ -1,0 +1,101 @@
+product_id,name,description,category,price,in_stock
+prod_001,Levi's T-Shirt Space Gray,A high-quality black t-shirt by Levi's. Perfect for everyday use.,T-Shirt,884.03,True
+prod_002,Casio Watch Black,A high-quality green watch by Casio. Perfect for everyday use.,Watch,317.67,False
+prod_003,Sennheiser Headphones Green,A high-quality red headphones by Sennheiser. Perfect for everyday use.,Headphones,455.27,True
+prod_004,Casio Watch Space Gray,A high-quality white watch by Casio. Perfect for everyday use.,Watch,551.4,True
+prod_005,HarperCollins Book Silver,A high-quality silver book by HarperCollins. Perfect for everyday use.,Book,80.41,True
+prod_006,Hydro Flask Water Bottle White,A high-quality white water bottle by Hydro Flask. Perfect for everyday use.,Water Bottle,828.31,False
+prod_007,Casio Watch Silver,A high-quality blue watch by Casio. Perfect for everyday use.,Watch,244.39,True
+prod_008,Plan B Skateboard White,A high-quality black skateboard by Plan B. Perfect for everyday use.,Skateboard,312.89,True
+prod_009,Generic Coffee Mug Silver,A high-quality black coffee mug by Generic. Perfect for everyday use.,Coffee Mug,608.9,False
+prod_010,Levi's T-Shirt Red,A high-quality space gray t-shirt by Levi's. Perfect for everyday use.,T-Shirt,274.99,True
+prod_011,Generic Water Bottle Silver,A high-quality silver water bottle by Generic. Perfect for everyday use.,Water Bottle,220.57,False
+prod_012,Nalgene Water Bottle Black,A high-quality red water bottle by Nalgene. Perfect for everyday use.,Water Bottle,944.62,True
+prod_013,Element Skateboard Green,A high-quality red skateboard by Element. Perfect for everyday use.,Skateboard,814.96,False
+prod_014,Santa Cruz Skateboard Red,A high-quality red skateboard by Santa Cruz. Perfect for everyday use.,Skateboard,127.2,False
+prod_015,Generic Coffee Mug White,A high-quality red coffee mug by Generic. Perfect for everyday use.,Coffee Mug,430.9,False
+prod_016,Google Smartphone Black,A high-quality silver smartphone by Google. Perfect for everyday use.,Smartphone,637.62,True
+prod_017,Google Smartphone White,A high-quality red smartphone by Google. Perfect for everyday use.,Smartphone,375.13,False
+prod_018,Plan B Skateboard Silver,A high-quality red skateboard by Plan B. Perfect for everyday use.,Skateboard,865.99,True
+prod_019,Generic Skateboard Black,A high-quality red skateboard by Generic. Perfect for everyday use.,Skateboard,184.97,False
+prod_020,Fossil Watch Green,A high-quality red watch by Fossil. Perfect for everyday use.,Watch,628.73,False
+prod_021,Uniqlo T-Shirt Silver,A high-quality green t-shirt by Uniqlo. Perfect for everyday use.,T-Shirt,304.85,True
+prod_022,Yeti Coffee Mug Green,A high-quality green coffee mug by Yeti. Perfect for everyday use.,Coffee Mug,212.49,False
+prod_023,Plan B Skateboard Red,A high-quality green skateboard by Plan B. Perfect for everyday use.,Skateboard,65.05,False
+prod_024,Uniqlo T-Shirt Green,A high-quality red t-shirt by Uniqlo. Perfect for everyday use.,T-Shirt,937.76,False
+prod_025,Audio-Technica Headphones Blue,A high-quality blue headphones by Audio-Technica. Perfect for everyday use.,Headphones,624.25,False
+prod_026,Random House Book Green,A high-quality blue book by Random House. Perfect for everyday use.,Book,42.27,False
+prod_027,HP Laptop White,A high-quality black laptop by HP. Perfect for everyday use.,Laptop,915.19,True
+prod_028,Contigo Coffee Mug Black,A high-quality space gray coffee mug by Contigo. Perfect for everyday use.,Coffee Mug,888.08,True
+prod_029,Dell Laptop Black,A high-quality white laptop by Dell. Perfect for everyday use.,Laptop,127.78,False
+prod_030,Generic Water Bottle Silver,A high-quality blue water bottle by Generic. Perfect for everyday use.,Water Bottle,675.2,True
+prod_031,Self-Published Book Red,A high-quality space gray book by Self-Published. Perfect for everyday use.,Book,113.02,False
+prod_032,Levi's T-Shirt Silver,A high-quality black t-shirt by Levi's. Perfect for everyday use.,T-Shirt,815.38,False
+prod_033,Hydro Flask Water Bottle Green,A high-quality silver water bottle by Hydro Flask. Perfect for everyday use.,Water Bottle,451.85,True
+prod_034,Nike T-Shirt Space Gray,A high-quality space gray t-shirt by Nike. Perfect for everyday use.,T-Shirt,282.21,True
+prod_035,Self-Published Book Blue,A high-quality blue book by Self-Published. Perfect for everyday use.,Book,416.97,True
+prod_036,New Balance Running Shoes Green,A high-quality red running shoes by New Balance. Perfect for everyday use.,Running Shoes,268.71,True
+prod_037,Google Smartphone Green,A high-quality blue smartphone by Google. Perfect for everyday use.,Smartphone,441.28,True
+prod_038,Audio-Technica Headphones Silver,A high-quality space gray headphones by Audio-Technica. Perfect for everyday use.,Headphones,445.3,False
+prod_039,Bose Headphones White,A high-quality blue headphones by Bose. Perfect for everyday use.,Headphones,978.5,True
+prod_040,New Balance Running Shoes Blue,A high-quality white running shoes by New Balance. Perfect for everyday use.,Running Shoes,807.66,True
+prod_041,Generic Water Bottle Blue,A high-quality blue water bottle by Generic. Perfect for everyday use.,Water Bottle,113.52,True
+prod_042,Starbucks Coffee Mug Silver,A high-quality green coffee mug by Starbucks. Perfect for everyday use.,Coffee Mug,374.47,False
+prod_043,Google Smartphone Silver,A high-quality white smartphone by Google. Perfect for everyday use.,Smartphone,534.25,False
+prod_044,Random House Book Space Gray,A high-quality space gray book by Random House. Perfect for everyday use.,Book,948.03,True
+prod_045,Nike T-Shirt White,A high-quality blue t-shirt by Nike. Perfect for everyday use.,T-Shirt,116.31,True
+prod_046,Yeti Coffee Mug Red,A high-quality red coffee mug by Yeti. Perfect for everyday use.,Coffee Mug,608.4,False
+prod_047,Nalgene Water Bottle Silver,A high-quality white water bottle by Nalgene. Perfect for everyday use.,Water Bottle,475.07,False
+prod_048,Generic Coffee Mug White,A high-quality red coffee mug by Generic. Perfect for everyday use.,Coffee Mug,296.13,True
+prod_049,Generic Water Bottle Space Gray,A high-quality space gray water bottle by Generic. Perfect for everyday use.,Water Bottle,711.45,True
+prod_050,Hydro Flask Water Bottle Red,A high-quality white water bottle by Hydro Flask. Perfect for everyday use.,Water Bottle,803.29,False
+prod_051,Hydro Flask Water Bottle Black,A high-quality black water bottle by Hydro Flask. Perfect for everyday use.,Water Bottle,714.3,True
+prod_052,Lenovo Laptop White,A high-quality blue laptop by Lenovo. Perfect for everyday use.,Laptop,904.17,False
+prod_053,New Balance Running Shoes Blue,A high-quality green running shoes by New Balance. Perfect for everyday use.,Running Shoes,454.86,True
+prod_054,CamelBak Water Bottle Blue,A high-quality space gray water bottle by CamelBak. Perfect for everyday use.,Water Bottle,809.44,True
+prod_055,Fossil Watch Space Gray,A high-quality space gray watch by Fossil. Perfect for everyday use.,Watch,64.27,False
+prod_056,HarperCollins Book Green,A high-quality red book by HarperCollins. Perfect for everyday use.,Book,739.5,False
+prod_057,Yeti Coffee Mug Black,A high-quality blue coffee mug by Yeti. Perfect for everyday use.,Coffee Mug,892.94,True
+prod_058,Starbucks Coffee Mug Black,A high-quality green coffee mug by Starbucks. Perfect for everyday use.,Coffee Mug,521.66,False
+prod_059,Random House Book Space Gray,A high-quality blue book by Random House. Perfect for everyday use.,Book,875.69,False
+prod_060,Generic Coffee Mug Space Gray,A high-quality silver coffee mug by Generic. Perfect for everyday use.,Coffee Mug,641.08,True
+prod_061,Nike Running Shoes Silver,A high-quality silver running shoes by Nike. Perfect for everyday use.,Running Shoes,413.44,False
+prod_062,Sennheiser Headphones Silver,A high-quality green headphones by Sennheiser. Perfect for everyday use.,Headphones,762.8,True
+prod_063,HarperCollins Book Blue,A high-quality silver book by HarperCollins. Perfect for everyday use.,Book,481.08,False
+prod_064,Fossil Watch Green,A high-quality blue watch by Fossil. Perfect for everyday use.,Watch,184.9,False
+prod_065,Uniqlo T-Shirt Red,A high-quality blue t-shirt by Uniqlo. Perfect for everyday use.,T-Shirt,125.76,True
+prod_066,Generic Skateboard Space Gray,A high-quality green skateboard by Generic. Perfect for everyday use.,Skateboard,758.36,True
+prod_067,Plan B Skateboard Silver,A high-quality silver skateboard by Plan B. Perfect for everyday use.,Skateboard,374.63,False
+prod_068,Samsung Smartphone Space Gray,A high-quality white smartphone by Samsung. Perfect for everyday use.,Smartphone,50.59,True
+prod_069,Apple Smartphone Green,A high-quality space gray smartphone by Apple. Perfect for everyday use.,Smartphone,572.74,True
+prod_070,Xiaomi Smartphone Space Gray,A high-quality white smartphone by Xiaomi. Perfect for everyday use.,Smartphone,665.45,True
+prod_071,Self-Published Book White,A high-quality red book by Self-Published. Perfect for everyday use.,Book,186.04,False
+prod_072,Google Smartphone Black,A high-quality black smartphone by Google. Perfect for everyday use.,Smartphone,219.45,True
+prod_073,Apple Smartphone Red,A high-quality blue smartphone by Apple. Perfect for everyday use.,Smartphone,957.16,False
+prod_074,Yeti Coffee Mug White,A high-quality white coffee mug by Yeti. Perfect for everyday use.,Coffee Mug,746.9,True
+prod_075,Nike Running Shoes White,A high-quality green running shoes by Nike. Perfect for everyday use.,Running Shoes,913.75,False
+prod_076,Bose Headphones Green,A high-quality green headphones by Bose. Perfect for everyday use.,Headphones,830.03,False
+prod_077,Adidas T-Shirt Black,A high-quality silver t-shirt by Adidas. Perfect for everyday use.,T-Shirt,235.45,True
+prod_078,HarperCollins Book Silver,A high-quality green book by HarperCollins. Perfect for everyday use.,Book,568.83,True
+prod_079,Google Smartphone White,A high-quality silver smartphone by Google. Perfect for everyday use.,Smartphone,154.49,True
+prod_080,Adidas T-Shirt Red,A high-quality green t-shirt by Adidas. Perfect for everyday use.,T-Shirt,491.81,True
+prod_081,HP Laptop Silver,A high-quality black laptop by HP. Perfect for everyday use.,Laptop,984.85,True
+prod_082,Adidas Running Shoes Black,A high-quality green running shoes by Adidas. Perfect for everyday use.,Running Shoes,244.4,True
+prod_083,Generic Skateboard Green,A high-quality white skateboard by Generic. Perfect for everyday use.,Skateboard,334.37,False
+prod_084,CamelBak Water Bottle Green,A high-quality space gray water bottle by CamelBak. Perfect for everyday use.,Water Bottle,257.42,False
+prod_085,Generic Water Bottle Red,A high-quality black water bottle by Generic. Perfect for everyday use.,Water Bottle,295.17,True
+prod_086,Bose Headphones Black,A high-quality black headphones by Bose. Perfect for everyday use.,Headphones,764.54,True
+prod_087,Audio-Technica Headphones Blue,A high-quality black headphones by Audio-Technica. Perfect for everyday use.,Headphones,626.14,True
+prod_088,New Balance Running Shoes Red,A high-quality blue running shoes by New Balance. Perfect for everyday use.,Running Shoes,115.98,False
+prod_089,Apple Laptop Blue,A high-quality green laptop by Apple. Perfect for everyday use.,Laptop,552.23,True
+prod_090,Uniqlo T-Shirt Silver,A high-quality black t-shirt by Uniqlo. Perfect for everyday use.,T-Shirt,230.16,False
+prod_091,Generic Skateboard White,A high-quality blue skateboard by Generic. Perfect for everyday use.,Skateboard,311.36,False
+prod_092,Nike Running Shoes Blue,A high-quality blue running shoes by Nike. Perfect for everyday use.,Running Shoes,455.75,False
+prod_093,Uniqlo T-Shirt Green,A high-quality green t-shirt by Uniqlo. Perfect for everyday use.,T-Shirt,454.92,True
+prod_094,Levi's T-Shirt Red,A high-quality black t-shirt by Levi's. Perfect for everyday use.,T-Shirt,35.94,True
+prod_095,Starbucks Coffee Mug Silver,A high-quality blue coffee mug by Starbucks. Perfect for everyday use.,Coffee Mug,628.83,True
+prod_096,Sony Headphones Green,A high-quality silver headphones by Sony. Perfect for everyday use.,Headphones,986.24,False
+prod_097,Fossil Watch White,A high-quality green watch by Fossil. Perfect for everyday use.,Watch,322.09,True
+prod_098,Dell Laptop Red,A high-quality space gray laptop by Dell. Perfect for everyday use.,Laptop,350.49,False
+prod_099,Generic Skateboard Red,A high-quality blue skateboard by Generic. Perfect for everyday use.,Skateboard,273.0,True
+prod_100,Xiaomi Smartphone White,A high-quality space gray smartphone by Xiaomi. Perfect for everyday use.,Smartphone,139.47,True
