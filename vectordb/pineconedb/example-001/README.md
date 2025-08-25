@@ -8,10 +8,10 @@ CRUD operations of Pinecone DB https://app.pinecone.io/.
 4. uv sync
 
 # Environment configurations, you can put in bash_profile or .env
-PINECONE_API_KEY=your_pinecone_api_key_here
-OPENAI_API_KEY=your_openai_api_key_here
-PINECONE_CLOUD_NAME=cloud name e.g. aws
-PINECONE_CLOUD_REGION=cloud region name e.g. us-east-1
+1. PINECONE_API_KEY=your_pinecone_api_key_here
+2. OPENAI_API_KEY=your_openai_api_key_here
+3. PINECONE_CLOUD_NAME=cloud name e.g. aws
+4. PINECONE_CLOUD_REGION=cloud region name e.g. us-east-1
 
 # Build custom product catalog data
 python src/create_product_catalog.py
