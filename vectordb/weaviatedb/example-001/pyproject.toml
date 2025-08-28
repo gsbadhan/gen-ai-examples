@@ -1,0 +1,12 @@
+[project]
+name = "example-001"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "load-dotenv>=0.1.0",
+    "openai>=1.102.0",
+    "pandas>=2.3.2",
+    "weaviate-client>=4.16.9",
+]
