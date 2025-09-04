@@ -4,6 +4,8 @@
 2. GenAI model integration using AWS bedrock, see `/genai-aws`
 3. Langchain integration `/langchain`
 4. Langsmith integration `/langsmith`
+5. Agent frameworks `/autogen` , `/crew-ai` , `/langgraph/chatbot-langgraph-agents`
+6. Vector databases `/vectordb` 
 
 
 
