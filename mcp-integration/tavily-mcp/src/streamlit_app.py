@@ -18,11 +18,11 @@ if st.button("Ask"):
         st.subheader("Answer")
         st.write(result["answer"])
 
-        st.subheader("Internal RAG Data Used")
+        st.subheader("Internal RAG data used")
         for doc in result["rag_docs"]:
             st.write(f"- {doc['text']} (Bank: {doc['metadata']['bank']} / Country: {doc['metadata']['country']})")
 
-        st.subheader("Internal tools used")
+        st.subheader("External tools used")
         st.write(result["tools_used"])
 
         with st.expander("Debug: Raw Response"):
