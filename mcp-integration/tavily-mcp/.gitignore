@@ -1,0 +1,8 @@
+.venv
+.python-version
+uv.lock
+.DS_Store
+*__pycache__
+*/__pycache__
+htmlcov
+chroma_db

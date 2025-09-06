@@ -1,0 +1,17 @@
+[project]
+name = "tavily-mcp"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "chromadb>=1.0.20",
+    "langchain>=0.3.27",
+    "langchain-community>=0.3.29",
+    "langchain-openai>=0.3.32",
+    "langsmith>=0.4.25",
+    "openai>=1.106.1",
+    "pandas>=2.3.2",
+    "python-dotenv>=1.1.1",
+    "streamlit>=1.49.1",
+]
