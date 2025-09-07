@@ -7,6 +7,7 @@ from langsmith.run_helpers import traceable
 
 load_dotenv()
 
+# Load keys
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 TAVILY_API_KEY = os.getenv("TAVILY_API_KEY")
 
@@ -15,79 +16,141 @@ if not OPENAI_API_KEY:
 if not TAVILY_API_KEY:
     raise RuntimeError("Set TAVILY_API_KEY")
 
-# Chroma
+# Initialize
 chroma_client = chromadb.PersistentClient(path="./chroma_db")
 collection = chroma_client.get_collection("bank_rates")
-
-# Embeddings
 emb = OpenAIEmbeddings(model="text-embedding-3-small", openai_api_key=OPENAI_API_KEY)
-
-# OpenAI
 client = OpenAI(api_key=OPENAI_API_KEY)
 
+# Tavily MCP definition
 tavily_tool = {
-        "type": "mcp",
-        "server_label": "tavily",
-        "server_url": f"https://mcp.tavily.com/mcp/?tavilyApiKey={TAVILY_API_KEY}",
-        "require_approval": "never"
-    }
+    "type": "mcp",
+    "server_label": "tavily",
+    "server_url": f"https://mcp.tavily.com/mcp/?tavilyApiKey={TAVILY_API_KEY}",
+    "require_approval": "never"
+}
+
 
 @traceable(name="RAG call")
-def retrieve_rag(query: str, k: int = 3):
+def query_rag(query: str, country: str, k: int = 1):
+    """Query ChromaDB (internal bank data)."""
     q_emb = emb.embed_query(query)
-    results = collection.query(query_embeddings=[q_emb], n_results=k, include=["documents", "metadatas"])
-    return [{"text": doc, "metadata": meta} for doc, meta in zip(results["documents"][0], results["metadatas"][0])]
-
-
-def build_prompt(rag_docs, query: str):
-    system_msg = (
-        "You are a financial assistant. Use internal bank data (RAG) and external Tavily search if needed.\n"
-        "Prefer RAG data when available. Always cite sources clearly."
+    results = collection.query(
+        query_embeddings=[q_emb],
+        n_results=k,
+        where_document= {"$contains": country},
+        include=["documents", "metadatas"],
     )
-    rag_text = "\n".join([f"[RAG] {d['text']}" for d in rag_docs])
-    user_msg = f"User Query: {query}\n\nInternal Data:\n{rag_text}"
-    return system_msg, user_msg
+    return [
+        {"text": doc, "metadata": meta}
+        for doc, meta in zip(results["documents"][0], results["metadatas"][0])
+    ]
+
+
+def format_rag_results(rag_docs):
+    """Convert RAG docs into structured output."""
+    data = {}
+    for doc in rag_docs:
+        meta = doc.get("metadata", {})
+        country = meta.get("country")
+        bank = meta.get("bank")
+        fd_rate = meta.get("fd_rate")
+        if country and bank and fd_rate:
+            data.setdefault(country, []).append({"bank": bank, "fd_rate": fd_rate})
+    return data
+
+
+def call_tavily(query: str):
+    """Use Tavily MCP tool to fetch data."""
+    response = client.responses.create(
+        model="gpt-4.1",
+        tools=[tavily_tool],
+        input=[{"role": "user", "content": query}],
+        max_output_tokens=800,
+    )
+
+    tavily_data = {}
+    for output in response.output:
+        if output.type == "mcp_call" and output.server_label == "tavily":
+            text = getattr(output, "output_text", "")
+            for line in text.splitlines():
+                line = line.strip()
+                if not line:
+                    continue
+                # Example: "China ICBC: 1.8%"
+                if ":" in line:
+                    parts = line.split(":")
+                    left, right = parts[0].strip(), parts[1].strip()
+                    tokens = left.split()
+                    if len(tokens) >= 2:
+                        country, bank = tokens[0], " ".join(tokens[1:])
+                        tavily_data.setdefault(country, []).append(
+                            {"bank": bank, "fd_rate": right}
+                        )
+    return tavily_data
+
+
+def call_llm(query: str):
+    """Fallback: Ask LLM directly if both RAG and Tavily fail."""
+    response = client.responses.create(
+        model="gpt-4o-mini",
+        input=[
+            {"role": "system", "content": "Answer clearly with country-wise, bank-wise FD rates if available."},
+            {"role": "user", "content": query},
+        ],
+        max_output_tokens=600,
+    )
+    return response.output_text.strip()
+
+
+def format_final_output(rag_data, tavily_data, llm_text=None):
+    """Merge results and format output."""
+    final_text = "Here are the Fixed Deposit (FD) rates by country and bank:\n\n"
+
+    combined = {**rag_data}
+    for country, banks in tavily_data.items():
+        combined.setdefault(country, []).extend(banks)
+
+    if combined:
+        for country, banks in combined.items():
+            final_text += f"{country}:\n"
+            for b in banks:
+                final_text += f"  {b['bank']}: {b['fd_rate']}\n"
+            final_text += "\n"
+
+    if not combined and llm_text:
+        final_text += llm_text
+
+    return final_text.strip()
 
 
 @traceable(name="agent_call")
-def run_agent(query: str):
-    rag_docs = retrieve_rag(query)
-    system_msg, user_msg = build_prompt(rag_docs, query)
+def run_agent(country: str):
+    prompt = f"what are the FD, Home loans and Personal loans rates for country {country} ?"
+    print(f"prompt: {prompt}")
+    
+    # Step 1: RAG
+    rag_docs = query_rag(query=prompt, country=country, k=1)
+    rag_data = format_rag_results(rag_docs)
+    
+    # Step 2: Tavily (if RAG insufficient)
+    tavily_data = {}
+    if not rag_data:
+        print(f"No resposne from RAG, calling Tavily MCP...")
+        tavily_data = call_tavily(prompt)
 
-    response = client.responses.create(
-    model="gpt-4.1",
-    tools=[tavily_tool],
-    input=[
-        {"role": "system", "content": system_msg},
-        {"role": "user", "content": user_msg}
-    ],
-    max_output_tokens=500
-    )
+    # Step 3: LLM fallback (if Tavily also empty)
+    llm_text = None
+    if not rag_data and not tavily_data:
+        print(f"No resposne from MCP, calling LLM directly...")
+        llm_text = call_llm(prompt)
 
-    # for debugging purpose
-    tools_used = get_sources(response=response)
+    # Final output
+    final_answer = format_final_output(rag_data, tavily_data, llm_text)
 
     return {
-        "answer": getattr(response, "output_text", str(response)),
+        "answer": final_answer,
         "rag_docs": rag_docs,
-        "tools_used": tools_used,
-        "raw": response
+        "tavily_data": tavily_data,
+        "llm_fallback": llm_text,
     }
-
-
-def get_sources(response):
-    sources = set()
-
-    for output in response.output:
-        # Detect Tavily usage
-        if output.type == "mcp_call" and output.server_label == "tavily":
-            sources.add("TAVILY")
-
-        # Detect RAG usage from assistant message
-        if output.type == "message":
-            text = output.content[0].text
-            if "Internal Bank Data" in text or "internal bank data" in text:
-                sources.add("RAG")
-
-    return sources
-

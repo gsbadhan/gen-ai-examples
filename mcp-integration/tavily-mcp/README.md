@@ -18,6 +18,8 @@ Bank rate assistant which is integrated with Tavily MCP server, Vector DB, LLM a
 4. LANGCHAIN_TRACING_V2="true"
 5. LANGCHAIN_PROJECT="rag-tavily-agent"
 
+# Banking rates data (csv) path
+/tavily-mcp/data/bank_rates.csv
 
 # Setup and build vector db with data using Chroma
 python src/vector_setup.py
