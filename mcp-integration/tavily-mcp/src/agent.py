@@ -104,7 +104,7 @@ def call_tavily(query: str, country: str):
             for content in getattr(output, "content", []):
                 if getattr(content, "type", "") == "output_text":
                     text = getattr(content, "text", "").strip()
-                    print(f" text tag {text}")
+                    #print(f" text tag {text}")
                     if text.startswith("["):  # Expect JSON array
                         try:
                             parsed = json.loads(text)
@@ -130,7 +130,7 @@ def call_tavily(query: str, country: str):
                     print("Snippet:", r.get("content")[:200])  # optional
             except Exception as e:
                 print("Error parsing raw Tavily search results:", e)
-    print(f"tavily data {tavily_data}")                            
+    #print(f"tavily data {tavily_data}")                            
     return tavily_data
 
 
